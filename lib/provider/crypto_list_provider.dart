@@ -4,13 +4,13 @@ import 'package:provider_demo/model/crypto_history.dart';
 import 'package:provider_demo/model/crypto_list.dart';
 
 class CryptoListProvider with ChangeNotifier {
-  CryptoList cryptoList = CryptoList();
+  late List<Currency> cryptoList;
   CryptoHistory cryptoHistory = CryptoHistory();
   RemoteServices remoteServices = RemoteServices();
   bool loading = false;
   bool historyLoading = false;
 
-  getPostData(context) async {
+   getCryptoList(context) async {
     loading = true;
     cryptoList = await remoteServices.getCryptoList();
     loading = false;

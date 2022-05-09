@@ -5,7 +5,10 @@ import 'package:dio/dio.dart';
 class ApiClient {
   static bool apiDebuggin = true;
   static Dio? dio;
-  static const String baseUrl = 'https://api.coincap.io/v2/';
+  static const String apiKey = '3f1e6b52a152f390fb1c5eb3e646885d50a8ea7a';
+  static const String baseUrl = 'https://api.nomics.com/v1/currencies/ticker?key=$apiKey&interval=1d,30d&convert=EUR&per-page=20&page=1';
+  // static const String baseUrl = 'https://api.coincap.io/v2/';
+  
 
   static Dio? getClient() {
     if (dio == null) {

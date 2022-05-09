@@ -22,7 +22,7 @@ class _MyHomePageState extends State<MyHomePage> {
     // TODO: implement initState
     super.initState();
     final cryptoProvider = Provider.of<CryptoListProvider>(context, listen: false);
-    cryptoProvider.getPostData(context);
+    cryptoProvider.getCryptoList(context);
   }
 
   @override
@@ -41,13 +41,13 @@ class _MyHomePageState extends State<MyHomePage> {
           child: CircularProgressIndicator()
         ),
       ):
-      cryptoProvider.cryptoList.assets !=null? ListView.builder(
+      cryptoProvider.cryptoList.isNotEmpty? ListView.builder(
         itemBuilder: (context,i){
           return CryptoTile(
-            asset: cryptoProvider.cryptoList.assets![i],
+            currency : cryptoProvider.cryptoList[i],
           );
         },
-        itemCount: cryptoProvider.cryptoList.assets!.length,
+        itemCount: cryptoProvider.cryptoList.length,
       ):SizedBox(
         height: MediaQuery.of(context).size.height,
         width: MediaQuery.of(context).size.width,
@@ -58,7 +58,7 @@ class _MyHomePageState extends State<MyHomePage> {
       floatingActionButton: FloatingActionButton(
         backgroundColor: grad1,
         onPressed: (){
-          cryptoProvider.getPostData(context);
+          cryptoProvider.getCryptoList(context);
         },
         tooltip: 'Refresh',
         child: const Icon(Icons.refresh),
