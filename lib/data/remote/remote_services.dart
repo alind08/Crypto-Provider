@@ -1,6 +1,4 @@
-import 'dart:convert';
 import 'dart:developer';
-import 'package:dio/dio.dart';
 import 'package:provider_demo/model/crypto_history.dart';
 import 'package:provider_demo/model/crypto_list.dart';
 import 'api_client.dart';
@@ -10,12 +8,9 @@ class RemoteServices{
    Future<List<Currency>> getCryptoList() async {
      
     try {
-      // late List<Currency> currencyList;
       var  response = await ApiClient.getClient()!.get("");
       log(response.data.runtimeType.toString());
       List<Currency> currencyList = response.data.map<Currency>((i) =>Currency.fromJson(i)).toList();
-      // var l = json.decode(response.data);
-      // List<Currency> currencyList = List<Currency>.from(l.map((model)=> Currency.fromJson(model)));
       return currencyList;
     } on Exception catch (e) {
       log(e.toString());

@@ -4,7 +4,6 @@ import 'package:flutter_svg/svg.dart';
 import 'package:provider_demo/model/crypto_list.dart';
 import 'package:provider_demo/utils/decoration/colors.dart';
 import 'package:provider_demo/utils/decoration/text_styles.dart';
-import 'package:provider_demo/view/crypto_history.dart';
 
 class CryptoTile extends StatelessWidget {
   final Currency? currency;
@@ -14,24 +13,24 @@ class CryptoTile extends StatelessWidget {
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () {
-        Navigator.push(
-            context,
-            MaterialPageRoute(
-                builder: (_) => CryptoHistory(
-                      assetId: currency!.id,
-                    )));
+      //   Navigator.push(
+      //       context,
+      //       MaterialPageRoute(
+      //           builder: (_) => CryptoHistory(
+      //                 assetId: currency!.id,
+      //               )));
       },
       child: Card(
         color: darkerGreyColor,
         child: Padding(
-          padding: const EdgeInsets.fromLTRB(8, 12, 0, 12),
+          padding: const EdgeInsets.fromLTRB(8, 8, 0, 8),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               // Image.network(currency!.logoUrl.toString()),
               Padding(
-                padding: const EdgeInsets.all(10.0),
+                padding: const EdgeInsets.fromLTRB(0, 8, 8, 8),
                 child: SizedBox(
                   height: 40,
                   width: 40,
@@ -90,16 +89,16 @@ class ImageWidget extends StatelessWidget {
       return SvgPicture.network(
           imageUrl,
           placeholderBuilder: (BuildContext context) => Container(
-              height: 20,
-              width: 20,
+              height: 16,
+              width: 16,
               child: const Center(child: CircularProgressIndicator(strokeWidth: 0.7,))),
         );
     }
     return CachedNetworkImage(
       imageUrl: imageUrl,
       placeholder: (context, url) =>  Container(
-        height: 20,
-        width: 20,
+        height: 16,
+        width: 16,
         child: const Center(child: CircularProgressIndicator(strokeWidth: 0.7,))),
       errorWidget: (context, url, error) => const Icon(Icons.error),
     );
