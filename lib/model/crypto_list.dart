@@ -1,66 +1,3 @@
-// class CryptoList {
-//   List<Asset>? assets;
-//   int? timestamp;
-
-//   CryptoList({this.assets, this.timestamp});
-
-  // CryptoList.fromJson(Map<String, dynamic> json) {
-  //   if (json['data'] != null) {
-  //     assets = [];
-  //     json['data'].forEach((v) {
-  //       assets!.add(Asset.fromJson(v));
-  //     });
-  //   }
-  //   timestamp = json['timestamp'];
-  // }
-
-// }
-
-// class Asset {
-//   String? id;
-//   String? rank;
-//   String? symbol;
-//   String? name;
-//   String? supply;
-//   String? maxSupply;
-//   String? marketCapUsd;
-//   String? volumeUsd24Hr;
-//   String? priceUsd;
-//   String? changePercent24Hr;
-//   String? vwap24Hr;
-//   String? explorer;
-
-//   Asset(
-//       {this.id,
-//         this.rank,
-//         this.symbol,
-//         this.name,
-//         this.supply,
-//         this.maxSupply,
-//         this.marketCapUsd,
-//         this.volumeUsd24Hr,
-//         this.priceUsd,
-//         this.changePercent24Hr,
-//         this.vwap24Hr,
-//         this.explorer});
-
-//   Asset.fromJson(Map<String, dynamic> json) {
-//     id = json['id'];
-//     rank = json['rank'];
-//     symbol = json['symbol'];
-//     name = json['name'];
-//     supply = json['supply'];
-//     maxSupply = json['maxSupply'];
-//     marketCapUsd = json['marketCapUsd'];
-//     volumeUsd24Hr = json['volumeUsd24Hr'];
-//     priceUsd = json['priceUsd'];
-//     changePercent24Hr = json['changePercent24Hr'];
-//     vwap24Hr = json['vwap24Hr'];
-//     explorer = json['explorer'];
-//   }
-
-// }
-
 
 class Currency {
   String? id;
@@ -140,42 +77,38 @@ class Currency {
     rankDelta = json['rank_delta'];
     high = json['high'];
     highTimestamp = json['high_timestamp'];
-    oneD = json['1d'] != null ? new OneD.fromJson(json['1d']) : null;
+    oneD = json['1d'] != null ? OneD.fromJson(json['1d']) : null;
     thirtyD =
-        json['30d'] != null ? new OneD.fromJson(json['30d']) : null;
+        json['30d'] != null ? OneD.fromJson(json['30d']) : null;
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['id'] = this.id;
-    data['currency'] = this.currency;
-    data['symbol'] = this.symbol;
-    data['name'] = this.name;
-    data['logo_url'] = this.logoUrl;
-    data['status'] = this.status;
-    data['price'] = this.price;
-    data['price_date'] = this.priceDate;
-    data['price_timestamp'] = this.priceTimestamp;
-    data['circulating_supply'] = this.circulatingSupply;
-    data['max_supply'] = this.maxSupply;
-    data['market_cap'] = this.marketCap;
-    data['market_cap_dominance'] = this.marketCapDominance;
-    data['num_exchanges'] = this.numExchanges;
-    data['num_pairs'] = this.numPairs;
-    data['num_pairs_unmapped'] = this.numPairsUnmapped;
-    data['first_candle'] = this.firstCandle;
-    data['first_trade'] = this.firstTrade;
-    data['first_order_book'] = this.firstOrderBook;
-    data['rank'] = this.rank;
-    data['rank_delta'] = this.rankDelta;
-    data['high'] = this.high;
-    data['high_timestamp'] = this.highTimestamp;
-    if (this.oneD != null) {
-      data['1d'] = this.oneD!.toJson();
-    }
-    if (this.thirtyD != null) {
-      data['30d'] = this.thirtyD!.toJson();
-    }
+    final Map<String, dynamic> data = Map<String, dynamic>();
+    data['id'] = id;
+    data['currency'] = currency;
+    data['symbol'] = symbol;
+    data['name'] = name;
+    data['logo_url'] = logoUrl;
+    data['status'] = status;
+    data['price'] = price;
+    data['price_date'] = priceDate;
+    data['price_timestamp'] = priceTimestamp;
+    data['circulating_supply'] = circulatingSupply;
+    data['max_supply'] = maxSupply;
+    data['market_cap'] = marketCap;
+    data['market_cap_dominance'] = marketCapDominance;
+    data['num_exchanges'] = numExchanges;
+    data['num_pairs'] = numPairs;
+    data['num_pairs_unmapped'] = numPairsUnmapped;
+    data['first_candle'] = firstCandle;
+    data['first_trade'] = firstTrade;
+    data['first_order_book'] = firstOrderBook;
+    data['rank'] = rank;
+    data['rank_delta'] = rankDelta;
+    data['high'] = high;
+    data['high_timestamp'] = highTimestamp;
+    data['1d'] = oneD!.toJson();
+    data['30d'] = thirtyD!.toJson();
     return data;
   }
 }
@@ -210,13 +143,13 @@ class OneD {
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['volume'] = this.volume;
-    data['price_change'] = this.priceChange;
-    data['price_change_pct'] = this.priceChangePct;
-    data['volume_change'] = this.volumeChange;
-    data['volume_change_pct'] = this.volumeChangePct;
-    data['market_cap_change'] = this.marketCapChange;
-    data['market_cap_change_pct'] = this.marketCapChangePct;
+    data['volume'] = volume;
+    data['price_change'] = priceChange;
+    data['price_change_pct'] = priceChangePct;
+    data['volume_change'] = volumeChange;
+    data['volume_change_pct'] = volumeChangePct;
+    data['market_cap_change'] = marketCapChange;
+    data['market_cap_change_pct'] = marketCapChangePct;
     return data;
   }
 }
